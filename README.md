@@ -39,8 +39,6 @@ https://sonarcloud.io/organizations/xavier-ropero/projects
 ![Coverage](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero_ci-back&metric=coverage)
 ![Bugs](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero_ci-back&metric=bugs)
 
----
-
 
 ## 🐳 DockerHub
 
