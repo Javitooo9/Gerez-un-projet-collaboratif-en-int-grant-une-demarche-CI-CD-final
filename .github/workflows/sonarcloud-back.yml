@@ -32,8 +32,5 @@ jobs:
         working-directory: back
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-          -Dsonar.projectKey=Javitooo9_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD-final \
-          -Dsonar.organization=xavier-ropero \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=Javitooo9_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD-final -Dsonar.organization=xavier-ropero -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
