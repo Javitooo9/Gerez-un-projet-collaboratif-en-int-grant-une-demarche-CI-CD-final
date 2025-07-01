@@ -24,20 +24,15 @@ https://sonarcloud.io/organizations/xavier-ropero/projects
 
 ### 📦 Front-end
 
-### 📦 Front-end
-
-![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero_ci-front&metric=alert_status)
-![Coverage](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero_ci-front&metric=coverage)
-![Bugs](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero_ci-front&metric=bugs)
-
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero:bobapp-frontend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=xavier-ropero:bobapp-frontend)  
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero:bobapp-frontend&metric=coverage)](https://sonarcloud.io/summary/new_code?id=xavier-ropero:bobapp-frontend)  
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero:bobapp-frontend&metric=bugs)](https://sonarcloud.io/summary/new_code?id=xavier-ropero:bobapp-frontend)
 
 ### 🔧 Back-end
 
-### 🛠 Back-end
-
-![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero_ci-back&metric=alert_status)
-![Coverage](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero_ci-back&metric=coverage)
-![Bugs](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero_ci-back&metric=bugs)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero:bobapp-backend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=xavier-ropero:bobapp-backend)  
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero:bobapp-backend&metric=coverage)](https://sonarcloud.io/summary/new_code?id=xavier-ropero:bobapp-backend)  
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero:bobapp-backend&metric=bugs)](https://sonarcloud.io/summary/new_code?id=xavier-ropero:bobapp-backend)
 
 
 ## 🐳 DockerHub
