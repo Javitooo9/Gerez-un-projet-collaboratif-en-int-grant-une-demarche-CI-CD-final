@@ -24,18 +24,20 @@ https://sonarcloud.io/organizations/xavier-ropero/projects
 
 ### 📦 Front-end
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=MyCIApp-Front&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=MyCIApp-Front)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=MyCIApp-Front&metric=bugs)](https://sonarcloud.io/summary/new_code?id=MyCIApp-Front)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=MyCIApp-Front&metric=coverage)](https://sonarcloud.io/summary/new_code?id=MyCIApp-Front)
-[![Duplicated Lines](https://sonarcloud.io/api/project_badges/measure?project=MyCIApp-Front&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=MyCIApp-Front)
+### 📦 Front-end
+
+![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero_ci-front&metric=alert_status)
+![Coverage](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero_ci-front&metric=coverage)
+![Bugs](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero_ci-front&metric=bugs)
+
 
 ### 🔧 Back-end
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=MyCIApp-Back&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=MyCIApp-Back)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=MyCIApp-Back&metric=bugs)](https://sonarcloud.io/summary/new_code?id=MyCIApp-Back)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=MyCIApp-Back&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=MyCIApp-Back)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=MyCIApp-Back&metric=coverage)](https://sonarcloud.io/summary/new_code?id=MyCIApp-Back)
-[![Duplicated Lines](https://sonarcloud.io/api/project_badges/measure?project=MyCIApp-Back&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=MyCIApp-Back)
+### 🛠 Back-end
+
+![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero_ci-back&metric=alert_status)
+![Coverage](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero_ci-back&metric=coverage)
+![Bugs](https://sonarcloud.io/api/project_badges/measure?project=xavier-ropero_ci-back&metric=bugs)
 
 ---
 
