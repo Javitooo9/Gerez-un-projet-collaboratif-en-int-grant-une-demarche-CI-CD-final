@@ -27,6 +27,7 @@ jobs:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-
+          
       - name: Build and analyze with Maven
+        working-directory: back
         run: mvn clean verify sonar:sonar -Dsonar.projectKey=xavier-ropero_ci-back -Dsonar.organization=xavier-ropero -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=${{ secrets.SONAR_TOKEN }}
