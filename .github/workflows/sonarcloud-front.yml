@@ -1,20 +1,21 @@
-name: SonarCloud - Front
+name: SonarCloud – Front
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   sonarcloud:
-    name: Analyze front with SonarCloud
+    name: Analyse Front-end avec SonarCloud
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0          # nécessaire pour les branches et tags
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -27,18 +28,21 @@ jobs:
         run: npm ci
         working-directory: front
 
-      - name: Run tests
+      - name: Run tests & collect coverage
         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless --code-coverage
         working-directory: front
 
-      - name: SonarCloud scan
-        uses: SonarSource/sonarqube-scan-action@v5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: 'https://sonarcloud.io/'
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
         with:
+          organization: xavier-ropero
+          projectKey: xavier-ropero_bobapp-frontend   
+          token: ${{ secrets.SONAR_TOKEN }}
           projectBaseDir: front
-          args: >
+          extra_args: |
             -Dsonar.sources=src/app
             -Dsonar.exclusions=**/*.spec.ts
+            -Dsonar.tests=src/app
+            -Dsonar.test.inclusions=**/*.spec.ts
             -Dsonar.javascript.lcov.reportPaths=coverage/bobapp/lcov.info
+            -Dsonar.sourceEncoding=UTF-8
