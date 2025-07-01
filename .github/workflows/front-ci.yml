@@ -2,43 +2,40 @@ name: Front Angular CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
-
+    branches: ["main"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - name: 🛎️ Checkout du code
-      uses: actions/checkout@v4
-    
-    - name: 📦 Installation de Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 18
-        cache: 'npm'
-        cache-dependency-path: front/package-lock.json
-      
-    - name: 📥 Installation des dépendances
-      run: npm ci
-      working-directory: front
-      
-    - name: 🏗️ Build de l'application
-      run: npm run build --if-present
-      working-directory: front
+      - name: 🛎️ Checkout du code
+        uses: actions/checkout@v4
 
-    - name: 📂 Sauvegarde du build
-      uses: actions/upload-artifact@v4
-      with:
-        name: front-artifact
-        path: front/dist/
+      - name: 📦 Installation de Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: front/package-lock.json
+
+      - name: 📥 Installation des dépendances
+        run: npm ci
+        working-directory: front
+
+      - name: 🏗️ Build de l'application
+        run: npm run build
+        working-directory: front
+
+      - name: 📂 Sauvegarde du build
+        uses: actions/upload-artifact@v4
+        with:
+          name: front-artifact
+          path: front/dist/
 
   test:
-
     runs-on: ubuntu-latest
     needs: build
 
@@ -46,7 +43,7 @@ jobs:
       - name: 🛎️ Checkout du code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0  # Nécessaire pour Sonar
 
       - name: 📦 Installation de Node.js
         uses: actions/setup-node@v4
@@ -63,17 +60,19 @@ jobs:
         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless --code-coverage
         working-directory: front
 
-      - name: 🔎 SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: 'https://sonarcloud.io/'
+      - name: 🔎 Analyse SonarCloud
+        uses: SonarSource/sonarcloud-github-action@v2.1.1
         with:
           projectBaseDir: front
           args: >
+            -Dsonar.projectKey=Javitooo9_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD-final-front
+            -Dsonar.organization=xavier-ropero
             -Dsonar.sources=src/app
-            -Dsonar.exclusions=src/**/*.spec.ts
+            -Dsonar.exclusions=**/*.spec.ts
             -Dsonar.javascript.lcov.reportPaths=coverage/bobapp/lcov.info
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
 
       - name: 📂 Sauvegarde Coverage report
         if: always()
