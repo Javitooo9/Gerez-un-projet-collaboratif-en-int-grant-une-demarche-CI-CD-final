@@ -38,13 +38,6 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
 
-      <!-- Plugin SonarCloud -->
-      <plugin>
-        <groupId>org.sonarsource.scanner.maven</groupId>
-        <artifactId>sonar-maven-plugin</artifactId>
-        <version>4.0.0.2929</version>
-      </plugin>
-
       <!-- Plugin Jacoco pour couverture de test -->
       <plugin>
         <groupId>org.jacoco</groupId>
