@@ -1,4 +1,4 @@
-name: SonarCloud â€“ Front
+name: SonarCloud – Front
 
 on:
   push:
@@ -7,10 +7,9 @@ on:
     branches: [ main ]
 
 jobs:
-  sonarcloud:
+  sonar:
     name: Analyse Front-end avec SonarCloud
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,7 +20,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
+          cache: npm
           cache-dependency-path: front/package-lock.json
 
       - name: Install dependencies
@@ -32,28 +31,13 @@ jobs:
         working-directory: front
         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless --code-coverage
 
-                 - name: Run tests & collect coverage
-       working-directory: front
-       run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless --code-coverage
-
-
-       - name: SonarCloud Scan
-         uses: SonarSource/sonarcloud-github-action@v1
-         with:
-           organization: xavier-ropero
-           projectKey: xavier-ropero:bobapp-frontend
-           token: ${{ secrets.SONAR_TOKEN }}
-           host-url: https://sonarcloud.io
-           projectBaseDir: front
-           extra_args: |
-             -Dsonar.sources=src/app
-             -Dsonar.exclusions=**/*.spec.ts
-             -Dsonar.tests=src/app
-             -Dsonar.test.inclusions=**/*.spec.ts
-             -Dsonar.javascript.lcov.reportPaths=coverage/bobapp/lcov.info
-             -Dsonar.sourceEncoding=UTF-8
-
-
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v1
+        with:
+          organization: xavier-ropero
+          projectKey: xavier-ropero:bobapp-frontend
+          token: ${{ secrets.SONAR_TOKEN }}
+          host-url: https://sonarcloud.io
           projectBaseDir: front
           extra_args: |
             -Dsonar.sources=src/app
