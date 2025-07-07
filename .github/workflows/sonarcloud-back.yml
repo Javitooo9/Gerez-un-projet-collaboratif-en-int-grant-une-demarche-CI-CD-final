@@ -41,7 +41,7 @@ jobs:
         run: mvn clean verify -B
 
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarcloud-github-action@v1
         with:
           organization: xavier-ropero
           projectKey: xavier-ropero:bobapp-backend

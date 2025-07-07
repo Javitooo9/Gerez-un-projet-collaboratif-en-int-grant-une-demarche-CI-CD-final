@@ -60,19 +60,19 @@ jobs:
         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless --code-coverage
         working-directory: front
 
-      - name: 🔎 Analyse SonarCloud
-        uses: SonarSource/sonarcloud-github-action@v2.1.1
+        name: 🔎 Analyse SonarCloud
+        uses: SonarSource/sonarcloud-github-action@v1
         with:
-          projectBaseDir: front
-          args: >
-            -Dsonar.projectKey=Javitooo9_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD-final-front
-            -Dsonar.organization=xavier-ropero
-            -Dsonar.sources=src/app
-            -Dsonar.exclusions=**/*.spec.ts
-            -Dsonar.javascript.lcov.reportPaths=coverage/bobapp/lcov.info
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: https://sonarcloud.io
+            projectKey: xavier-ropero:bobapp-frontend
+            organization: xavier-ropero
+            token: ${{ secrets.SONAR_TOKEN }}
+            host-url: https://sonarcloud.io
+            projectBaseDir: front
+            extra_args: |
+              -Dsonar.sources=src/app
+              -Dsonar.exclusions=**/*.spec.ts
+              -Dsonar.javascript.lcov.reportPaths=coverage/bobapp/lcov.info
+
 
       - name: 📂 Sauvegarde Coverage report
         if: always()
