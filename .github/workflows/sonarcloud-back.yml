@@ -20,9 +20,9 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
 
-      - name: Build and test with Maven & Sonar
+      - name: Build and analyse with SonarCloud
         run: mvn clean verify sonar:sonar `
-              -Dsonar.projectKey=xavier-ropero:bobapp-backend `
+              -Dsonar.login=${{ secrets.SONAR_TOKEN }} `
               -Dsonar.organization=xavier-ropero `
-              -Dsonar.host.url=https://sonarcloud.io `
-              -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+              -Dsonar.projectKey=xavier-ropero:bobapp-backend `
+              -Dsonar.host.url=https://sonarcloud.io
