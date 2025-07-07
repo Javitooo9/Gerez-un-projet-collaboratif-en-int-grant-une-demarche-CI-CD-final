@@ -37,7 +37,7 @@ jobs:
           path: front/coverage
 
       - name: 🔎 Analyse SonarCloud
-        uses: SonarSource/sonarcloud-github-action@v2.1.1
+        uses: SonarSource/sonarcloud-github-action@v2.1.1`r`n        env:`r`n          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           projectBaseDir: front
           args: |
