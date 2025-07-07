@@ -32,17 +32,22 @@ jobs:
         working-directory: front
         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless --code-coverage
 
-      - name: SonarCloud Scan
+            - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1
         with:
           organization: xavier-ropero
           projectKey: xavier-ropero:bobapp-frontend
-          host-url: https://sonarcloud.io
-          organization: xavier-ropero
           token: ${{ secrets.SONAR_TOKEN }}
           host-url: https://sonarcloud.io
-          host-url: https://sonarcloud.io
-            token: ${{ secrets.SONAR_TOKEN }}
+          projectBaseDir: front
+          extra_args: |
+            -Dsonar.sources=src/app
+            -Dsonar.exclusions=**/*.spec.ts
+            -Dsonar.tests=src/app
+            -Dsonar.test.inclusions=**/*.spec.ts
+            -Dsonar.javascript.lcov.reportPaths=coverage/bobapp/lcov.info
+            -Dsonar.sourceEncoding=UTF-8
+
           projectBaseDir: front
           extra_args: |
             -Dsonar.sources=src/app
