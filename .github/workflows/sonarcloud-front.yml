@@ -37,6 +37,7 @@ jobs:
         with:
           organization: xavier-ropero
           projectKey: xavier-ropero:bobapp-frontend
+          host-url: https://sonarcloud.io
             token: ${{ secrets.SONAR_TOKEN }}
           projectBaseDir: front
           extra_args: |
