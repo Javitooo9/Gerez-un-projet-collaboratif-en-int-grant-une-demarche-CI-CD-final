@@ -45,6 +45,7 @@ jobs:
         with:
           organization: xavier-ropero
           projectKey: xavier-ropero:bobapp-backend
+          host-url: https://sonarcloud.io
           organization: xavier-ropero
           token: ${{ secrets.SONAR_TOKEN }}
           host-url: https://sonarcloud.io
@@ -52,7 +53,6 @@ jobs:
           token: ${{ secrets.SONAR_TOKEN }}
           projectBaseDir: back
           extra_args: |
-            -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.sources=src/main/java
             -Dsonar.tests=src/test/java
             -Dsonar.java.binaries=target
