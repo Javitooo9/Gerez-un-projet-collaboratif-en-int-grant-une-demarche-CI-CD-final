@@ -54,3 +54,18 @@ jobs:
         with:
           name: backend-artifact
           path: back/target/*.jar
+      #
+      # … après “?? Upload JaCoCo Report” ou juste avant la fin du job …
+      #
+      - name: ?? Analyse SonarCloud
+        uses: SonarSource/sonarcloud-github-action@v2.1.1
+        with:
+          projectBaseDir: back
+          args: |
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.organization=xavier-ropero
+            -Dsonar.projectKey=xavier-ropero:bobapp-backend
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.sources=src
+            -Dsonar.tests=src/test/java
+            -Dsonar.java.binaries=target/classes
