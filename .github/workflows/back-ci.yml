@@ -30,18 +30,10 @@ jobs:
           name: jacoco-report
           path: back/target/site/jacoco
 
-      - name: 🔎 Analyse SonarCloud
-        uses: SonarSource/sonarcloud-github-action@v2.1.1
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          projectBaseDir: back
-          args: |
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-            -Dsonar.organization=xavier-ropero
-            -Dsonar.projectKey=xavier-ropero:bobapp-backend
-            -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.sources=src/main/java
-            -Dsonar.tests=src/test/java
-            -Dsonar.java.binaries=target/classes
-            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+      - name: 🔎 Analyse SonarCloud via Maven
+        working-directory: back
+        run: mvn sonar:sonar \
+          -Dsonar.projectKey=xavier-ropero:bobapp-backend \
+          -Dsonar.organization=xavier-ropero \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
