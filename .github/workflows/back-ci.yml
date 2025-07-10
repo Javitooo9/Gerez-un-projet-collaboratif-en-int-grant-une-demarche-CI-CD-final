@@ -9,6 +9,7 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -19,12 +20,9 @@ jobs:
           distribution: temurin
           java-version: '11'
 
-
       - name: Build and test
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=BobApp-Back
         working-directory: back
+        run: mvn -B verify
 
       - name: Upload JaCoCo report
         uses: actions/upload-artifact@v4
@@ -34,8 +32,19 @@ jobs:
 
       - name: 🔎 Analyse SonarCloud via Maven
         working-directory: back
-        run: mvn sonar:sonar \
-          -Dsonar.projectKey=xavier-ropero:bobapp-backend \
-          -Dsonar.organization=xavier-ropero \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          mvn sonar:sonar \
+            -Dsonar.projectKey=xavier-ropero:bobapp-backend \
+            -Dsonar.organization=xavier-ropero \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=${{ env.SONAR_TOKEN }} \
+            -Dsonar.sources=src/main/java \
+            -Dsonar.tests=src/test/java \
+            -Dsonar.java.binaries=target/classes \
+            -Dsonar.junit.reportPaths=target/surefire-reports \
+            -Dsonar.jacoco.reportPaths=target/jacoco.exec \
+            -Dsonar.javascript.lcov.reportPaths=../front/coverage/bobapp/lcov.info \
+            -Dsonar.test.inclusions=**/*.spec.ts \
+            -Dsonar.exclusions=**/*.spec.ts
